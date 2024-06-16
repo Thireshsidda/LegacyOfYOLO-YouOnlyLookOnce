@@ -50,7 +50,7 @@ Two years later, in April 2020, other authors used the YOLO name to publish vers
 
 In January 2023, Ultralytics open-sourced the YOLOv8 with semantic segmentation capabilities alongside detection. In May 2023, Deci AI came up with YOLO-NAS, an algorithm-generated architecture that surpassed all the predecessors of YOLO.
 
-This is the timeline of YOLO Models
+*This is the timeline of YOLO Models*
 
 ![th](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/432260bb-fa27-4a45-9ada-3144cf3c0326)
 
