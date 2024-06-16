@@ -1,0 +1,4 @@
+# YOLOv1
+
+## Paper Summary
+Generally, there are two types of Deep Learning object detection models: single-stage and two-stage models. The single-stage model follows a specific design pattern, which is the Backbone-Neck-Head. However, in YOLOv1, there is no concept of a neck, only a backbone and head. YOLOv1 architecture is inspired by GoogleNet’s architecture, and has 24 convolutional layers and two fully-connected layers. In these layers, the first twenty layers act as a backbone, and rest of the layers lead up to an additional two fully-connected layers, acting as a detection head. Instead of the inception module, they used a 1×1 convolution layer with 3×3 convolutional layers in the backbone. This helped to reduce the number of channels without having to reduce spatial dimensions, and the number of parameters became relatively low. 
