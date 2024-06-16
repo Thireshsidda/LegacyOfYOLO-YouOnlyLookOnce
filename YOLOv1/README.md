@@ -2,3 +2,10 @@
 
 ## Paper Summary
 Generally, there are two types of Deep Learning object detection models: single-stage and two-stage models. The single-stage model follows a specific design pattern, which is the Backbone-Neck-Head. However, in YOLOv1, there is no concept of a neck, only a backbone and head. YOLOv1 architecture is inspired by GoogleNet’s architecture, and has 24 convolutional layers and two fully-connected layers. In these layers, the first twenty layers act as a backbone, and rest of the layers lead up to an additional two fully-connected layers, acting as a detection head. Instead of the inception module, they used a 1×1 convolution layer with 3×3 convolutional layers in the backbone. This helped to reduce the number of channels without having to reduce spatial dimensions, and the number of parameters became relatively low. 
+
+![Pasted-image-20231207112932-1-768x231](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/a7b6eba1-3fbd-4f9e-aa72-5ef92d73ab45)
+
+**Figure : YOLOv1 model architecture**
+
+
+The authors of YOLOV1  pre-trained the first 20 layers of YOLO in ImageNet at a resolution of 224×224, and the four remaining layers were finetuned in PASCAL VOC 2012 at a resolution of 448×448. This increased the information for the model to detect small objects more accurately. They trained their model for 135 epochs on the training and validation sets from VOC 2007 and 2012. They used a batch size of 64, momentum of 0.9, and learning rate decay of 0.0005. The learning rate(LR) scheduling is such that in the first few epochs the LR rate rises from $10^{-3}$ to $10^{-2}$. Initially it is trained for 75 epochs with a learning rate of $10^{-2}$ followed by $10^{-3}$ for 30 epochs, and finally the model undergoes an additional $10^{-4}$ for 30 epochs.
