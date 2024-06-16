@@ -18,3 +18,5 @@ The task of classifying and localizing multiples objects in an image is called `
 
 **Fig: Difference between Object Classification, localization and detection**
 [Source](https://www.geeksforgeeks.org/object-detection-vs-object-recognition-vs-image-segmentation/)
+
+There are numerous real-life applications for object detection. For example, in the field of Autonomous Vehicles, it is used for detecting vehicles, pedestrians, road delimiter prediction, HD-Map creation, traffic lights, and traffic signs, etc. In surveillance and monitoring, it is used in detecting trespassers, vehicle license plates, face mask detection, weapon detection etc. in biometric attendance systems. In medical imaging, its used for detecting certain cells, cancer detection, tumor detection, etc. and the list goes on. 
