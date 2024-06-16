@@ -17,4 +17,16 @@ This part of the equation implies that the distance is inversely proportional to
 
 ![Screenshot-from-2023-12-26-13-15-24](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/96477243-e744-4d50-bc0d-75559bb8819a)
 
-**Figure 2: Clustering of box dimensions on VOC and COCO [(Source)](https://arxiv.org/abs/1612.08242)
+**Figure 2: Clustering of box dimensions on VOC and COCO** [(Source)](https://arxiv.org/abs/1612.08242)
+
+## Fine-grained features:
+Like YOLOV1, YOLOV2 also predicts the bounding box coordinates relative to the grid cell. The modified YOLO predicts a 13×13 feature map, and while this helps detect large objects, having a fine-grained feature map might help detect small objects. Many detection models have different approaches, but in YOLOv2, the authors proposed a passthrough layer that concatenates features from a higher resolution layer to a lower resolution layer. When concatenating a higher-resolution image with a lower-resolution image, it internally restructures the higher-resolution image such that the special dimension reduces, but the depth increases. This means that if given a 26x26x512 feature map, it gets resized as 13x13x2048; here, the channel dimension 2048 comes from 512 x 2 x 2 = 2048. 
+
+## Location Prediction:
+The diagram below explained as,
+
+![Screenshot-from-2023-12-26-13-18-53](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/5f38cf97-64d4-4f7e-9fde-0bb08becd746)
+
+**Figure 3: bound box(relative to grid cell) parameter equations**
+
+Here, $c_x$, $c_y$ is the grid cell center. $b_x$, $b_y$ are the coordinates of the center of the predicted bound box relative to the grid cell. $b_w$ and $b_h$ are the width and height of the predicted bounding box, which is an offset of the prior anchor box associated with the grid. σ ensures the center point ($b_x​$, $by$​) stays within the grid cell by restricting the values between 0 and 1. $e^{t_w}$​ and $e^{t_h}$​ represent the exponential transformation of predicted width and height offsets $t_w​$ and $t_h$​, ensuring that the width and height stay positive, although using an exponential transform is mathematically unstable.  
