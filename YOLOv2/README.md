@@ -27,6 +27,12 @@ The diagram below explained as,
 
 ![Screenshot-from-2023-12-26-13-18-53](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/5f38cf97-64d4-4f7e-9fde-0bb08becd746)
 
-**Figure 3: bound box(relative to grid cell) parameter equations**
+**Figure 3: bound box(relative to grid cell) parameter equations** [(Source)](https://arxiv.org/abs/1612.08242)
 
-Here, $c_x$, $c_y$ is the grid cell center. $b_x$, $b_y$ are the coordinates of the center of the predicted bound box relative to the grid cell. $b_w$ and $b_h$ are the width and height of the predicted bounding box, which is an offset of the prior anchor box associated with the grid. σ ensures the center point ($b_x​$, $by$​) stays within the grid cell by restricting the values between 0 and 1. $e^{t_w}$​ and $e^{t_h}$​ represent the exponential transformation of predicted width and height offsets $t_w​$ and $t_h$​, ensuring that the width and height stay positive, although using an exponential transform is mathematically unstable.  
+Here, $c_x$, $c_y$ is the grid cell center. $b_x$, $b_y$ are the coordinates of the center of the predicted bound box relative to the grid cell. $b_w$ and $b_h$ are the width and height of the predicted bounding box, which is an offset of the prior anchor box associated with the grid. σ ensures the center point ($b_x​$, $by$​) stays within the grid cell by restricting the values between 0 and 1. $e^{t_w}$​ and $e^{t_h}$​ represent the exponential transformation of predicted width and height offsets $t_w​$ and $t_h$​, ensuring that the width and height stay positive, although using an exponential transform is mathematically unstable.
+
+## Multiscale training:
+They introduced multiscale training to make the model more robust. After every 10 batches, the model takes a randomly selected image dimension and continues training. Since their model downsamples by a factor of 32, they pull from the following multiples of 32: {320; 352; …; 608}.
+
+## Hierarchial Classification:
+The model is first trained for classification on ImageNet before even training detection. For that, they hierarchically prepare their data. Hierarchical Classification improves the model accuracy by leveraging the structure of class label’s hierarchically, the model can better understand the relationships between different classes. 
