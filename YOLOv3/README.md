@@ -8,3 +8,7 @@ YOLOv3 uses multiple independent logistic classifiers rather than one softmax la
 YOLOv3 uses the `DarkNet-53` as a backbone for feature extraction. The architecture has `alternative 1×1 and 3×3 convolution` layers and skip/residual connections inspired by the ResNet model. They also added the idea of `FPN` to leverage the benefit from all the prior computations and fine-grained features early on in the network. Although DarkNet53 is smaller than ResNet101 or RestNet-152, it is faster and has equivalent or better performance.
 
 Similar to YOLOv2, YOLOv3 also uses k-means to find the bound box before the anchors. In this model, they used three prior boxes for different scales, unlike YOLOv2.
+
+
+## Training YOLOv3
+Ultralytics has a YOLOv3 repository that is implemented in Pytorch. They provide a command line interface to train a model swiftly. The official repository for YOLOv3 is in the darknet framework. `YOLOv3 custom training` is a good resource to understand how scratch training works. We also show the training of YOLOv3 using Opencv python and c++ on the coco dataset. 
