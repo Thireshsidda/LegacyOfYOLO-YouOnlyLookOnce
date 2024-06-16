@@ -17,4 +17,4 @@ The task of classifying and localizing multiples objects in an image is called `
 ![th](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/599c0a34-6e4d-48d9-a0c1-3ecb9369da7b)
 
 **Fig: Difference between Object Classification, localization and detection**
-![Source](https://www.geeksforgeeks.org/object-detection-vs-object-recognition-vs-image-segmentation/)
+[Source](https://www.geeksforgeeks.org/object-detection-vs-object-recognition-vs-image-segmentation/)
