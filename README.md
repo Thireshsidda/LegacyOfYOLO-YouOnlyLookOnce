@@ -50,8 +50,52 @@ Two years later, in April 2020, other authors used the YOLO name to publish vers
 
 In January 2023, Ultralytics open-sourced the YOLOv8 with semantic segmentation capabilities alongside detection. In May 2023, Deci AI came up with YOLO-NAS, an algorithm-generated architecture that surpassed all the predecessors of YOLO.
 
-*This is the timeline of YOLO Models*
+**This is the timeline of YOLO Models**
 
 ![th](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/432260bb-fa27-4a45-9ada-3144cf3c0326)
+
+# YOLO LEGACY
+
+# Summary and Conclusion
+
+The whole YOLO series is full of engineering innovations and breakthroughs, It offers numerous applied machine learning ideas that can be used in specific scenarios. As Convolution Blocks are the basis for the entire YOLO series of models and as YOLO is mainly designed for edge devices, by going through all the YOLO models, one can learn different CNN optimization techniques.
+  
+  -When YOLOv1 was first introduced, it was revolutionary as it pioneered the concept of a single-stage detection model. It stood out for not incorporating any region proposal mechanisms, allowing it to analyze the entire image at once and efficiently capture both global and local context.
+  
+  -Later, the YOLOv2 and YOLOv3 models integrated advanced techniques that emerged at that time, such as the concept of **Feature Pyramid Networks (FPN)**, multi-scale training, and anchor boxes.
+  
+  -But, YOLOv4 was different, the authors went above and beyond to bring some ground-breaking changes to YOLO. They introduced changes in the architecture, the Darknet53, which became **CSPDarknet53-PANet-SPP**, techniques such as bag of specials and freebies, Genetic Evolution algorithms, Attention modules, and so on.
+  
+  -YOLOv5 brought changes that were very minimal and included most of the techniques from YOLOv4, what made YOLOv5, YOLOv5 is its Pytorch Implementation and how easy it is to train a Model using the Ultralytics. 
+  
+  -In YOLO-R, the authors experimented with a novel approach and worked toward evolving the model to support **multi-task learning**.
+  
+  -But, in YOLO-X, it was again back to integrating new advances to the old YOLOv3 model, such as **Anchor-free, Decoupled heads**, Lable assignment and strong augmentations etc. 
+  
+  -In YOLOv7 and YOLOv6 authors experimented with the model architecture, YOLOv7 first brought the concept of re-parameterization in YOLO and model scaling, and YOLOv6 contributed by adding distillation and quantization techniques.  
+  
+  -Looking at YOLOv8 and its performance, previous models might seem over-engineered because it was built on top of YOLOv5 with minimal changes, such as replacing CSPLayer with C2f module, adding better loss functions that help the model to deal with small objects. 
+  
+  -YOLO-NAS was an algorithm-generated model with quantization blocks that made the model faster and more accurate.
+
+
+## References
+
+[1] [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640)
+
+[2] [YOLO9000: Better, Faster, Stronger](https://arxiv.org/abs/1612.08242)
+
+[3] [YOLOv3: An Incremental Improvement](https://arxiv.org/abs/1804.02767)
+
+[4] [YOLOv4: Optimal Speed and Accuracy of Object Detection](https://arxiv.org/abs/2004.10934)
+
+[5] [YOLOv6: A Single-Stage Object Detection Framework for Industrial Applications](https://arxiv.org/abs/2209.02976)
+
+[6] [YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors](https://arxiv.org/abs/2207.02696)
+
+[7] [YOLO-NAS by Deci Achieves SOTA Performance on Object Detection Using Neural Architecture Search](https://deci.ai/blog/yolo-nas-object-detection-foundation-model/)
+
+[8] [A Comprehensive Review of YOLO: From YOLOv1 and Beyond](https://arxiv.org/abs/2304.00501)
+
 
 
