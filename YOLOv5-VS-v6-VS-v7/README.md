@@ -33,7 +33,7 @@ We will additionally provide you with answers to the most frequently asked quest
   -**Why do we encounter a decrease in FPS with Tiny/Nano models on some GPUs?**
   -**Which YOLO model is the most accurate?**
   -**Which are some of the best models to fine-tune from each, YOLOv5, YOLO6, and YOLOv7?**
- -** Which models are the best for small object detection?**
+ -**Which models are the best for small object detection?**
   -**How much GPU VRAM do I need for training YOLO models?**
 
 
