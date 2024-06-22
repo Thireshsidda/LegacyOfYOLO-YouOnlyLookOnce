@@ -60,21 +60,21 @@ In January 2023, Ultralytics open-sourced the YOLOv8 with semantic segmentation 
 
 The whole YOLO series is full of engineering innovations and breakthroughs, It offers numerous applied machine learning ideas that can be used in specific scenarios. As Convolution Blocks are the basis for the entire YOLO series of models and as YOLO is mainly designed for edge devices, by going through all the YOLO models, one can learn different CNN optimization techniques.
   
-  -When YOLOv1 was first introduced, it was revolutionary as it pioneered the concept of a single-stage detection model. It stood out for not incorporating any region proposal mechanisms, allowing it to analyze the entire image at once and efficiently capture both global and local context.
+  -When YOLOv1 was first introduced, it was revolutionary as it pioneered the concept of a single-stage detection model. It stood out for not incorporating any       region proposal mechanisms, allowing it to analyze the entire image at once and efficiently capture both global and local context.
   
-  -Later, the YOLOv2 and YOLOv3 models integrated advanced techniques that emerged at that time, such as the concept of **Feature Pyramid Networks (FPN)**, multi-scale training, and anchor boxes.
+  -Later, the YOLOv2 and YOLOv3 models integrated advanced techniques that emerged at that time, such as the concept of **Feature Pyramid Networks (FPN)**, multi-    scale training, and anchor boxes.
   
-  -But, YOLOv4 was different, the authors went above and beyond to bring some ground-breaking changes to YOLO. They introduced changes in the architecture, the Darknet53, which became **CSPDarknet53-PANet-SPP**, techniques such as bag of specials and freebies, Genetic Evolution algorithms, Attention modules, and so on.
+  -But, YOLOv4 was different, the authors went above and beyond to bring some ground-breaking changes to YOLO. They introduced changes in the architecture, the       Darknet53, which became **CSPDarknet53-PANet-SPP**, techniques such as bag of specials and freebies, Genetic Evolution algorithms, Attention modules, and so on.
   
-  -YOLOv5 brought changes that were very minimal and included most of the techniques from YOLOv4, what made YOLOv5, YOLOv5 is its Pytorch Implementation and how easy it is to train a Model using the Ultralytics. 
+  -YOLOv5 brought changes that were very minimal and included most of the techniques from YOLOv4, what made YOLOv5, YOLOv5 is its Pytorch Implementation and how      easy it is to train a Model using the Ultralytics. 
   
   -In YOLO-R, the authors experimented with a novel approach and worked toward evolving the model to support **multi-task learning**.
   
-  -But, in YOLO-X, it was again back to integrating new advances to the old YOLOv3 model, such as **Anchor-free, Decoupled heads**, Lable assignment and strong augmentations etc. 
+  -But, in YOLO-X, it was again back to integrating new advances to the old YOLOv3 model, such as **Anchor-free, Decoupled heads**, Lable assignment and strong       augmentations etc. 
   
-  -In YOLOv7 and YOLOv6 authors experimented with the model architecture, YOLOv7 first brought the concept of re-parameterization in YOLO and model scaling, and YOLOv6 contributed by adding distillation and quantization techniques.  
+  -In YOLOv7 and YOLOv6 authors experimented with the model architecture, YOLOv7 first brought the concept of re-parameterization in YOLO and model scaling, and      YOLOv6 contributed by adding distillation and quantization techniques.  
   
-  -Looking at YOLOv8 and its performance, previous models might seem over-engineered because it was built on top of YOLOv5 with minimal changes, such as replacing CSPLayer with C2f module, adding better loss functions that help the model to deal with small objects. 
+  -Looking at YOLOv8 and its performance, previous models might seem over-engineered because it was built on top of YOLOv5 with minimal changes, such as replacing    CSPLayer with C2f module, adding better loss functions that help the model to deal with small objects. 
   
   -YOLO-NAS was an algorithm-generated model with quantization blocks that made the model faster and more accurate.
 
