@@ -29,11 +29,17 @@ Along with the above, we will also uncover how the FPS of different YOLO models 
 We will additionally provide you with answers to the most frequently asked questions on the YOLO models:
 
   -**Which YOLO model is the fastest on the CPU?**
+  
   -**Which YOLO model is the fastest on the GPU?**
+  
   -**Why do we encounter a decrease in FPS with Tiny/Nano models on some GPUs?**
+  
   -**Which YOLO model is the most accurate?**
+  
   -**Which are some of the best models to fine-tune from each, YOLOv5, YOLO6, and YOLOv7?**
- -**Which models are the best for small object detection?**
+  
+  -**Which models are the best for small object detection?**
+  
   -**How much GPU VRAM do I need for training YOLO models?**
 
 
