@@ -99,3 +99,9 @@ The whole YOLO series is full of engineering innovations and breakthroughs, It o
 
 
 
+## Author
+
+👤 **Thiresh Sidda**
+
+* LinkedIn: [@ThireshSidda](https://www.linkedin.com/in/thiresh-sidda)
+* GitHub: [@ThireshSidda](https://github.com/Thireshsidda)
