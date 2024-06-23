@@ -138,5 +138,31 @@ A question arises, “But how does it actually look?”
   - Implicit knowledge – In this paper, the authors have provided three methods we can use to model implicit representations. We will look at this in the next sections, where we’ll go over all three modeling techniques (don’t worry, it’s easier than it feels like) and how to combine them with the explicit knowledge network.
 
 
+## YoloR Architecture
+As previously mentioned, the YoloR models are built upon the Scaled Yolov4 architecture. The authors take the Scaled YoloV4-P6 as the base model.
+![YoloR-creating-YoloV4-P6-light-2-768x626](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/6664f565-acbd-4e70-a796-2831761caa9f)
+
+***Creating YoloV4-P6-light from Scaled YoloV4-P6***
+
+First, a light version: YoloV4-P6-light, is constructed by changing the following:
+- The Stem of the network to reduce the input size and the number of parameters.
+- A significant reduction to each backbone stage’s Depth and Out Channels. Accordingly, the channels in the neck of the model are also updated.
+
+![YoloR-creating-variants-from-p6-light-768x134](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/abfc6c14-2bbf-4952-944c-aec2d72692d1)
+
+***YoloR models are based on the YoloV4-P6-light base architecture, where updates are made sequentially to generate each variant.***
+
+##### The YoloR models use the Yolov4-P6-light model as the base architecture. The authors have provided 4 model variants in the paper: P6, W6. E6 and D6.
+
+- YoloR-P6 is created by simply changing the activation function from Mish to SiLU.
+- YoloR-W6 uses YoloR-P6 architecture and changes the number of channels used in each backbone stage and, consequently, the neck.
+- YoloR-E6 is created by scaling the channels of YoloR-W6 by 1.25 times and changing all downsampling modules from strided Convolution to CSP convolution.
+- Finally, the YoloR-D6 is a collective model of all the above changes with increased depth of the backbone stages.
+
+![YoloR-downsampling-convolution-csp-convolution-768x226](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/758a1f45-37c3-4db5-80df-8585ef091390)
+
+
+
+
 
 
