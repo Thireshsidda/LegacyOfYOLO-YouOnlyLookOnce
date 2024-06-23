@@ -54,6 +54,8 @@ In January 2023, Ultralytics open-sourced the YOLOv8 with semantic segmentation 
 
 ![th](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/432260bb-fa27-4a45-9ada-3144cf3c0326)
 
+
+
 # YOLO LEGACY
 
 # Summary and Conclusion
@@ -77,6 +79,7 @@ The whole YOLO series is full of engineering innovations and breakthroughs, It o
   - Looking at YOLOv8 and its performance, previous models might seem over-engineered because it was built on top of YOLOv5 with minimal changes, such as replacing    CSPLayer with C2f module, adding better loss functions that help the model to deal with small objects. 
   
   - YOLO-NAS was an algorithm-generated model with quantization blocks that made the model faster and more accurate.
+
 
 
 ## References
