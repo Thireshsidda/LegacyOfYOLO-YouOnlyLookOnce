@@ -56,7 +56,7 @@ This impressive combination is the result of Deci’s proprietary Neural Archite
 
 The result speaks for itself.
 
-![YOLO-NAS-Pose-Video-Result](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/6198e256-290a-49a7-a4dc-54698fa7b5f4)
+![Yolo-Nas-Pose-Video-Result](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/6198e256-290a-49a7-a4dc-54698fa7b5f4)
 
 **Figure 3: YOLO-NAS Pose Estimation**
 
