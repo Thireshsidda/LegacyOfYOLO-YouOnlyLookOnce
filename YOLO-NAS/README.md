@@ -4,7 +4,7 @@
 In May 2023, an Israel-based company Deci, published their latest YOLO variant called YOLO-NAS, the current state-of-the-art object detection model. YOLO-NAS is tailored for efficiently detecting small objects and boasts enhanced localization precision. It also improves the performance-to-compute ratio, making it ideal for real-time edge-device applications. 
 
 They introduced a few quantization-aware modules, such as QSP and QCI. The architecture was generated through AutoNAC, which is Deci’s proprietary NAS technology. NAS means Neural Architecture Search. YOLO-NAS models incorporate attention mechanisms and reparameterization during inference to enhance their ability to detect objects.
--The YOLO-NAS models initially underwent pre-training on the Object365 benchmark dataset, which contains 2 million images across 365 categories. 
+- The YOLO-NAS models initially underwent pre-training on the Object365 benchmark dataset, which contains 2 million images across 365 categories. 
 
 -They were further pre-trained using a method called pseudo-labeling on 123,000 unlabeled images from the COCO dataset. 
 
