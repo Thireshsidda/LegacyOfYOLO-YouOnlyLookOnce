@@ -1,6 +1,6 @@
-YOLO-R
+# YOLO-R
 
-# Paper Summary
+## Paper Summary
 - In mid-2021 a few authors from the YOLOv4 team published YOLO-R. With this paper, the authors started exploring along the lines of multi-task learning.
 
 - The authors found that the feature extracted for a specific task is not generalized enough to be applied to other tasks. This means one can’t directly use the features from a detection model in a segmentation model. To solve this, everything boils down to producing a generalized representation. And this is where **Multi-task Learning(MTL)** comes into the picture. In MLT the model is trained to perform multiple different tasks simultaneously, rather than training task-specific models. By parallel training a model for multiple tasks, one can improve the model’s generalization capabilities. This is because the model leverages the commonalities and differences across the tasks. MLT is also helpful because it reduces the number of model parameters, resulting in fewer FLOPs and a decreased model latency.
