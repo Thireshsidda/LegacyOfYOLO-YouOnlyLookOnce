@@ -61,12 +61,6 @@ The result speaks for itself.
 **Figure 3: YOLO-NAS Pose Estimation**
 
 
-
-![YOLO-NAS-Pose-COCO-Val-2017-768x432](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/e6e2a0e4-307b-48e0-8829-97014768350c)
-
-**Figure 4: YOLO-NAS Pose Evaluation on COCO Val 2017 Dataset**
-
-
 The YOLO-NAS Pose models are evaluated on the COCO Val 2017 Dataset. The model’s accuracy and latency are state-of-the-art. The nano model is the fastest and reaches inference up to 425fps on a T4 GPU. Meanwhile, the large model can reach up to 113 fps.
 
 If we look at edge deployment, the nano and medium models will still run in real-time at 63fps and 48 fps, respectively. But when we look at the medium and large models deployed on Jetson Xavier NX, the speed starts dwindling and reaches 26fps and 20fps, respectively. These are still some of the best results available.
