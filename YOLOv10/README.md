@@ -187,3 +187,33 @@ head:
   - [[16, 19, 22], 1, v10Detect, [nc]] # Detect(P3, P4, P5)
 ```
 
+### Backbone
+
+The backbone extracts features from images. YOLOv10 uses an improved version of CSPNet (Cross Stage Partial Network) to improve the flow of information and use less computing power.
+
+### Neck
+
+The neck combines features from different backbone levels and passes them to the head. It effectively mixes features from multiple scales(layers) using PAN (Path Aggregation Network) layers.
+
+### One-to-Many Head
+
+During training, this head makes several predictions for each object. This gives the model lots of information(features), helping it learn better.
+
+### One-to-One Head
+
+During inference, this head makes a single best prediction for each object. This removes the need for NMS (Non-Maximum Suppression), making the process faster.
+
+YOLOv10 – Range of Models
+
+YOLOv10 comes with six variants of models depending on the size and efficiency –
+
+![image27-768x432](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/61409a12-da1c-469c-88b2-ced0f8b0cb2b)
+
+**Figure 13: YOLOv10 Model Variations**
+
+- **YOLOv10-N:** Nano for small and lightweight tasks.
+- **YOLOv10-S:** Small, upgrade of Nano with some extra accuracy.
+- **YOLOv10-M:** Medium for general-purpose use.
+- **YOLOv10-B:** Balanced with increased width of Medium for improved accuracy.
+- **YOLOv10-L:** Large for higher accuracy with higher computation.
+- **YOLOv10-X:** Extra-large for maximum accuracy and performance.
