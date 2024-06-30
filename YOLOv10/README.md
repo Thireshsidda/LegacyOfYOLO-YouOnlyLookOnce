@@ -290,4 +290,32 @@ Here, YOLOv10 performs well compared to the other two. Though all three detect t
 
 **Figure 19: YOLOv10 – YOLOv9 – YOLOv8**
 
-n this case, all the models performed well. However, as we worked with the default parameters, YOLOv10 is not able to detect some **small objects** in the distance, e.g., the person in the subway(in the third video) and the person in the distance in the left-down corner(in the fifth video). To tackle the issue, the authors of YOLOv10 suggest to set a **smaller confidence threshold** for inference.
+In this case, all the models performed well. However, as we worked with the default parameters, YOLOv10 is not able to detect some **small objects** in the distance, e.g., the person in the subway(in the third video) and the person in the distance in the left-down corner(in the fifth video). To tackle the issue, the authors of YOLOv10 suggest to set a **smaller confidence threshold** for inference.
+
+
+Now let’s see a comparison benchmark of these three models in terms of numbers:
+
+![Blog-Asset-1-2-768x432](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/adfb9b17-fe75-4d83-87db-fc06243487c2)
+
+**Figure 20: YOLOv8 vs YOLOv9 vs YOLOv10**
+
+The benchmark results show that each model has its own strengths. YOLOv8 achieved the highest fps for me. Now, let’s move on to more benchmark results, specifically YOLOv10. 
+
+
+## Key Takeaways
+
+### Dual Assignments for NMS-free Training
+YOLOv10 introduces a dual-head architecture, combining one-to-many and one-to-one label assignments during training. This innovative approach eliminates the need for Non-Maximum Suppression (NMS) during inference, streamlining the prediction process and enhancing efficiency without sacrificing accuracy.
+
+### Efficiency-Accuracy Driven Model Design
+YOLOv10 employs an Efficiency-Accuracy Driven Model Design, including lightweight classification heads, spatial-channel decoupled downsampling, and rank-guided block design. These optimizations reduce computational overhead and improve performance, ensuring a balance between efficiency and accuracy in object detection tasks.
+
+### Performance Improvements Over Other YOLOs
+YOLOv10 outperforms previous YOLO versions and other state-of-the-art models in terms of both accuracy and efficiency. It significantly improves latency and parameter counts while maintaining or enhancing detection performance, especially for small objects.
+
+### Perfect Benchmarks
+Extensive benchmarking reveals that YOLOv10 models exhibit high inference speeds and accuracy across various sizes (Nano to Extra-large) with low latency effectively. YOLOv10 models demonstrate superior performance metrics compared to their predecessors, making them ideal for real-time object detection applications.
+
+## Conclusion
+**YOLOv10** represents a significant leap forward in object detection. It addresses previous limitations in the YOLO series by integrating Consistent Dual Assignments for NMS-free training and an Efficiency-Accuracy Driven Model Design. These advancements result in faster, more accurate detections while reducing computational costs. So, next time you have an object detection task, make sure to use YOLOv10 for quick and precise results.
+
