@@ -217,3 +217,10 @@ YOLOv10 comes with six variants of models depending on the size and efficiency â
 - **YOLOv10-B:** Balanced with increased width of Medium for improved accuracy.
 - **YOLOv10-L:** Large for higher accuracy with higher computation.
 - **YOLOv10-X:** Extra-large for maximum accuracy and performance.
+
+![image12-768x281](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/04d4885a-d510-42f2-a46a-00e6c0a32a74)
+
+**Figure 14: YOLOv10 Performance Graph**
+
+YOLOv10 outperforms previous YOLO versions and other state-of-the-art models in accuracy and efficiency. For example, YOLOv10-S is 1.8x faster than RT-DETR-R18 with similar AP on the COCO dataset, and YOLOv10-B has 46% less latency and 25% fewer parameters than YOLOv9-C with the same performance. YOLOv10-L shows 68% fewer parameters and 32% lower latency than Gold-YOLO-L, with a significant improvement of 1.4% AP. And YOLOv10-X outperforms YOLOv8-X by  0.5 AP with 2.3x fewer parameters.
+
