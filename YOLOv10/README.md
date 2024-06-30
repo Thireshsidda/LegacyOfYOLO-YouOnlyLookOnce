@@ -109,4 +109,5 @@ Typical YOLO models use 3×3 convolutions with a stride of 2 for both spatial do
 
 **Figure 9: Depthwise and Pointwise Conv. (source-medium)**
 
-In short, YOLOv10 uses pointwise convolution (1×1 filter) to increase the number of channels and depthwise convolution to reduce the spatial dimensions rather than doing both simultaneously in a single convolution layer. This decoupling reduces computational costs while retaining more information during downsampling. Specifically, the computational cost decreases from  to , and the param counts are reduced from  to . This approach maximizes information retention and leads to high performance with reduced latency.
+In short, YOLOv10 uses pointwise convolution (1×1 filter) to increase the number of channels and depthwise convolution to reduce the spatial dimensions rather than doing both simultaneously in a single convolution layer. This decoupling reduces computational costs while retaining more information during downsampling. Specifically, the computational cost decreases from O(\frac{9}{2}HWC^{2})_{t0}O(2HWC^{2}+\frac{9}{2}HWC)_{,} and the param counts are reduced from \\
+O(18C^{2})_{t0}O(2C^{2}+18C). This approach maximizes information retention and leads to high performance with reduced latency.
