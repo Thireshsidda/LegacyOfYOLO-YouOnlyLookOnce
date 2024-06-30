@@ -224,3 +224,70 @@ YOLOv10 comes with six variants of models depending on the size and efficiency �
 
 YOLOv10 outperforms previous YOLO versions and other state-of-the-art models in accuracy and efficiency. For example, YOLOv10-S is 1.8x faster than RT-DETR-R18 with similar AP on the COCO dataset, and YOLOv10-B has 46% less latency and 25% fewer parameters than YOLOv9-C with the same performance. YOLOv10-L shows 68% fewer parameters and 32% lower latency than Gold-YOLO-L, with a significant improvement of 1.4% AP. And YOLOv10-X outperforms YOLOv8-X by  0.5 AP with 2.3x fewer parameters.
 
+
+### Inference using YOLOv10
+
+We’ll use the pre-trained weights from the YOLOv10 GitHub for our inference experiments. To do the inference, you need to clone the YOLOv10 repository by the following command:
+```
+! git clone https://github.com/THU-MIG/yolov10.git
+! cd yolov10
+```
+
+Then, we need to set up the environment using the following command:
+```
+! conda create -n yolov10 python=3.9
+! conda activate yolov10
+! pip install -r requirements.txt
+! pip install -e .
+```
+
+We are using miniconda to create the virtual environment. Within the environment, we installed all the required libraries.
+
+Then, we will run the inference using the following command:
+```
+! yolo predict model=yolov10n/s/m/b/l/x.pt source=/path/to/your/video save=True imgsz=384,640
+```
+
+YOLOv10’s codebase is built with Ultrlytics. As described in the [Ultralytics documentation](https://docs.ultralytics.com/modes/predict/), you can use all the available commands for inference. And it’s this easy to do the inference; you are done. The predictions will be saved at the location:
+```
+yolov10/runs/detect/predict
+```
+
+Now, all the pre-trained models are available in the pytorch native model, but if you want to export it in the onnx framework, you can do this using the following code:
+```
+yolo export model=yolov10n/s/m/b/l/x.pt format=onnx opset=13 simplify
+```
+
+You can add or modify other parameters using the ultralytics documentation. We are done with the code; see the result now:
+![image22](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/77f4b191-4b93-49c5-9942-30a28ff67dbe)
+
+**Figure 15: YOLOv10 Inference Results**
+
+Cool right! Now, let’s compare some inference results below.
+
+### YOLOv8 vs YOLOv9 vs YOLOv10
+Now, we will compare the last three iterations of the YOLO series. We will compare the results visually and also compare the benchmarks. I have taken the **YOLOv10L(24.4M params), YOLOv9C(25.3M params), and YOLOv8M(25.9M params)** for our experiment to maintain inference similarity. We used **Nvidia Geforce RTX 3070 Ti Laptop GPU** to run the inference and set the imgsz=384,640 for all models. The results are here:
+
+![image6](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/7e173f0d-3a2d-4347-b03d-2e1b98487b04)
+
+**Figure 16: YOLOv10 – YOLOv9 – YOLOv8**
+
+You can see that YOLOv10 and V9 can detect smaller objects(birds here) more efficiently. 
+
+![image3](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/80012548-f7f5-4cc0-b36a-578df4902e26)
+
+**Figure 17: YOLOv10 – YOLOv9 – YOLOv8**
+
+Here, we observed the No. of false predictions are less in YOLOv10 than others, and the conf. score is much better in YOLOv10 as well.
+
+![image8](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/aa9a0348-021b-4ea7-88f4-14d908c265e2)
+
+**Figure 18: YOLOv10 – YOLOv9 – YOLOv8**
+
+Here, YOLOv10 performs well compared to the other two. Though all three detect the fish as kites, YOLOv10 has the minimum number of false detections.
+
+![image9](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/d52865b1-4cf3-4bd2-b92a-70c4972d23bf)
+
+**Figure 19: YOLOv10 – YOLOv9 – YOLOv8**
+
+n this case, all the models performed well. However, as we worked with the default parameters, YOLOv10 is not able to detect some **small objects** in the distance, e.g., the person in the subway(in the third video) and the person in the distance in the left-down corner(in the fifth video). To tackle the issue, the authors of YOLOv10 suggest to set a **smaller confidence threshold** for inference.
