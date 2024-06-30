@@ -70,7 +70,7 @@ A consistent matching metric is used to improve YOLOv10’s dual label assignmen
 
 **Figure 5: Metric Equation**
 
-where 𝑝 is the classification score, $\hat{b}$ and 𝑏 are the prediction and instance bounding boxes, and 𝑠 shows if the prediction’s anchor point is within the instance. The parameters 𝛼 and 𝛽 balance the importance of classification and localization tasks. The one-to-many and one-to-one metrics are denoted as  and  respectively. By using the same metric for both heads, the model ensures the best samples chosen by the one-to-many head are also the best for the one-to-one head.
+where 𝑝 is the classification score, $\hat{b}$ and 𝑏 are the prediction and instance bounding boxes, and 𝑠 shows if the prediction’s anchor point is within the instance. The parameters 𝛼 and 𝛽 balance the importance of classification and localization tasks. The one-to-many and one-to-one metrics are denoted as $m_{o2m} = m(\alpha_{o2m}, \beta_{o2m})$ and $m_{o2o} = m(\alpha_{o2o}, \beta_{o2o})$ respectively. By using the same metric for both heads, the model ensures the best samples chosen by the one-to-many head are also the best for the one-to-one head.
 
 ![image10](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/dbd9ff43-11c7-49b1-817b-c6fa0e3415b6)
 
