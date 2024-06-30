@@ -6,16 +6,16 @@ The classy YOLO series has a new iteration, **YOLOv10**, a new object detection 
 
 **Table of Contents**
 
-- 1. What is YOLOv10?
-- 2. YOLO Master Post – Every Model Explained
-- 3. Components of YOLOv10
-- 4. YOLOv10 – Range of Models
-- 5. Inference using YOLOv10
-- 6. YOLOv8 vs YOLOv9 vs YOLOv10
-- 7. YOLOv10 - Benchmarks
-- 8. Key Takeaways
-- 10. Conclusion
-- 11. Reference
+- 1) What is YOLOv10?
+- 2) YOLO Master Post – Every Model Explained
+- 3) Components of YOLOv10
+- 4) YOLOv10 – Range of Models
+- 5) Inference using YOLOv10
+- 6) YOLOv8 vs YOLOv9 vs YOLOv10
+- 7) YOLOv10 - Benchmarks
+- 8) Key Takeaways
+- 10) Conclusion
+- 11) Reference
  
 ### What is YOLOv10?
 Three months back, Chien-Yao Wang and his team released YOLOv9, the 9th iteration of the YOLO series, which includes innovative methods such as Programmable Gradient Information (PGI) and Generalized Efficient Layer Aggregation Network (GELAN) to address issues related to information loss and computational efficiency effectively. But just like all other YOLOs, its reliance on the non-maximum suppression (NMS) for post-processing hampers the end-to-end deployment of the model and adversely impacts the inference latency. Additionally, the design of various YOLO components lacks comprehensive inspection, leading to unnecessary computation and reducing the model’s effectiveness.
