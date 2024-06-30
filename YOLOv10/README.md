@@ -101,7 +101,7 @@ By analyzing the impact of errors, researchers found that the regression head is
 
 ![image4](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/5176efa8-4884-4495-97c2-f3aa86af9c09)
 
-**Figure 8 - Convolution Process**
+**Figure 8: Convolution Process**
 
 Typical YOLO models use 3×3 convolutions with a stride of 2 for both spatial downsampling(from H × W to H/2 × W/2 ) and channel transformation(from C to 2C), which is computationally expensive. YOLOv10 decouples these operations for greater efficiency. First, a pointwise convolution adjusts the channel dimensions, followed by a depthwise convolution to reduce the spatial dimensions.
 
@@ -111,3 +111,79 @@ Typical YOLO models use 3×3 convolutions with a stride of 2 for both spatial do
 
 In short, YOLOv10 uses pointwise convolution (1×1 filter) to increase the number of channels and depthwise convolution to reduce the spatial dimensions rather than doing both simultaneously in a single convolution layer. This decoupling reduces computational costs while retaining more information during downsampling. Specifically, the computational cost decreases from $O(\frac{9}{2}HWC^{2}){t0}O(2HWC^{2}+\frac{9}{2}HWC){,}$  and the param counts are reduced from $\\
 O(18C^{2})_{t0}O(2C^{2}+18C)$. This approach maximizes information retention and leads to high performance with reduced latency.
+
+
+### Rank - Guided Block Design
+YOLOs often use the same block structure across all stages, which can be inefficient and cause bottlenecks. Besides YOLOv9 PGI and GELAN, YOLOv10  introduces a rank-guided block design to address redundancy. It calculates the intrinsic rank of each stage(the last convolution in the last basic block in each stage), identifies redundant stages, and replaces their basic blocks with a compact inverted block (CIB) structure. 
+
+![image24](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/7c1fae73-deed-49d5-9d7e-3a0a43f0fb22)
+
+**Figure 10: CIB Block**
+
+CIB uses depthwise convolutions for spatial mixing and pointwise convolutions for channel mixing. It can be an efficient basic building block, like an embedded part in the ELAN structure(and in the GELAN of YOLOv9). This adaptive strategy first sorts all stages on their intrinsic ranks in ascending order. Then, it replaces the basic blocks(with lower rank) with the more efficient CIB block. The stages are sorted by rank, and these replacements are progressively made to improve performance.
+
+### Accuracy-Driven Model Design
+
+To boost accuracy, YOLOv10 comes with two innovative approaches: large-kernel convolution in CIB and partial self-attention. Let’s explore both in the next section.
+
+#### Large-Kernel Convolution
+
+![image20-1024x576](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/bc57983b-4bdb-4c82-9339-4fcb882aac13)
+
+**Figure 11: Different Shapes of Kernel Used in Convolution of YOLO Models**
+
+Large-kernel depthwise convolutions are used to enlarge the convolution area size, improving the model’s ability to detect detailed features. YOLOv10 uses these large-kernel convolutions in CIB within deeper stages of the model, specifically increasing the kernel size of the second 3×3 depthwise convolution to 7×7. Additionally, structural reparameterization techniques add another 3×3 depthwise convolution branch to alleviate optimization issues without adding inference overhead. This method improves detection performance, especially for small objects, while keeping the computational load manageable.
+
+![image17](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/90f10f03-6c4b-4004-844e-ce8ef4705011)
+
+**Figure 12: PSA Block**
+
+**Self-attention**, while powerful, is computationally intensive. YOLOv10 introduces an efficient partial self-attention (PSA) module to incorporate global representation learning with reduced computational costs. Features are split into two parts after a 1×1 convolution; only one part is processed into the N_PSA blocks comprised of a multi-head self-attention (MHSA) and feed-forward network (FFN). The parts are then concatenated and fused by another 1×1 convolution. PSA is applied only in later stages with lower resolution, avoiding excessive overhead from the quadratic complexity of self-attention. This approach enhances the model’s overall capability and performance with minimal computational cost.
+
+
+## Architecture Overview
+The researchers of YOLOv10 hasnt provided the complete architecture diagram as of now. But we can have an architecture overview by understanding the codebase. Let’s explore:
+
+```
+# Parameters
+nc: 80 # number of classes
+scales: # model compound scaling constants, i.e. 'model=yolov8n.yaml' will call yolov8.yaml with scale 'n'
+  # [depth, width, max_channels]
+  b: [0.67, 1.00, 512] 
+ 
+# YOLOv8.0n backbone
+backbone:
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]] # 0-P1/2
+  - [-1, 1, Conv, [128, 3, 2]] # 1-P2/4
+  - [-1, 3, C2f, [128, True]]
+  - [-1, 1, Conv, [256, 3, 2]] # 3-P3/8
+  - [-1, 6, C2f, [256, True]]
+  - [-1, 1, SCDown, [512, 3, 2]] # 5-P4/16
+  - [-1, 6, C2f, [512, True]]
+  - [-1, 1, SCDown, [1024, 3, 2]] # 7-P5/32
+  - [-1, 3, C2fCIB, [1024, True]]
+  - [-1, 1, SPPF, [1024, 5]] # 9
+  - [-1, 1, PSA, [1024]] # 10
+ 
+# YOLOv8.0n head
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 6], 1, Concat, [1]] # cat backbone P4
+  - [-1, 3, C2fCIB, [512, True]] # 13
+ 
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 4], 1, Concat, [1]] # cat backbone P3
+  - [-1, 3, C2f, [256]] # 16 (P3/8-small)
+ 
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 13], 1, Concat, [1]] # cat head P4
+  - [-1, 3, C2fCIB, [512, True]] # 19 (P4/16-medium)
+ 
+  - [-1, 1, SCDown, [512, 3, 2]]
+  - [[-1, 10], 1, Concat, [1]] # cat head P5
+  - [-1, 3, C2fCIB, [1024, True]] # 22 (P5/32-large)
+ 
+  - [[16, 19, 22], 1, v10Detect, [nc]] # Detect(P3, P4, P5)
+```
+
