@@ -76,5 +76,7 @@ where 𝑝 is the classification score, $\hat{b}$ and 𝑏 are the prediction an
 
 **Figure 6: Matching Metric Workflow**
 
+Using the consistent matching metric helps both heads train better together, improving the one-to-one head’s predictions during inference. This metric reduces the supervision gap between the two heads by aligning their training targets. By setting $alpha_{o2o} = alpha_{o2m}$ and , both heads pick the same best samples. This alignment has improved performance, as seen by the number of matching pairs between the one-to-one and one-to-many heads after training. This approach leads to better model performance without needing extensive tuning.
+
 
 
