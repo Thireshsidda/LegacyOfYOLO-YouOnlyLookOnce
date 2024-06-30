@@ -30,7 +30,7 @@ So, like all other YOLOs, **Ao Wang, Hui Chen, et al.[1]** introduce the latest 
 ## Components of YOLOv10
 
 YOLOv10 consists of two main components:
-- 1) **NMS free training and inference
+- 1) NMS free training and inference
 - 2) Efficiency-Accuracy Driven Model Design
 
 
@@ -61,3 +61,17 @@ YOLOv10 combines the benefits of one-to-one and one-to-many matching strategies 
 -  **One-to-One Head:** This head uses a one-to-one matching strategy for label assignments, ensuring each ground truth is matched with a single prediction. It operates similarly to the Hungarian matching method but requires less training time. Using one-to-one matching eliminates the need for Non-Maximum Suppression (NMS) during inference, streamlining the prediction process.
 
 In training, both heads are used simultaneously, allowing the backbone and neck of the model to leverage the comprehensive supervision from the one-to-many assignments. This improves the model’s learning and accuracy. The one-to-many head is discarded during inference, and only the one-to-one head is used for making predictions. This approach ensures that the model can be deployed end-to-end without additional computational costs, maintaining high efficiency in real-time object detection tasks. 
+
+## **Consistent Matching Metric**
+
+A consistent matching metric is used to improve YOLOv10’s dual label assignments. This metric ensures that both the one-to-one and one-to-many heads align during their training. The matching metric is defined as
+
+![image23](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/69658330-46d7-4035-9e49-498be2cf495a)
+
+**Figure 5: Metric Equation**
+
+where 𝑝 is the classification score,  and 𝑏 are the prediction and instance bounding boxes, and 𝑠 shows if the prediction’s anchor point is within the instance. The parameters 𝛼 and 𝛽 balance the importance of classification and localization tasks. The one-to-many and one-to-one metrics are denoted as  and  respectively. By using the same metric for both heads, the model ensures the best samples chosen by the one-to-many head are also the best for the one-to-one head.
+
+![image10](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/dbd9ff43-11c7-49b1-817b-c6fa0e3415b6)
+
+**Figure 6: Matching Metric Workflow**
