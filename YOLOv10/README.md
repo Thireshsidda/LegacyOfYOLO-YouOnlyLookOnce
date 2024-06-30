@@ -17,7 +17,7 @@ The classy YOLO series has a new iteration, **YOLOv10**, a new object detection 
 - 10. Conclusion
 - 11. Reference
  
-### i) What is YOLOv10?
+### What is YOLOv10?
 Three months back, Chien-Yao Wang and his team released YOLOv9, the 9th iteration of the YOLO series, which includes innovative methods such as Programmable Gradient Information (PGI) and Generalized Efficient Layer Aggregation Network (GELAN) to address issues related to information loss and computational efficiency effectively. But just like all other YOLOs, its reliance on the non-maximum suppression (NMS) for post-processing hampers the end-to-end deployment of the model and adversely impacts the inference latency. Additionally, the design of various YOLO components lacks comprehensive inspection, leading to unnecessary computation and reducing the model’s effectiveness.
 
 ![image11](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/d4afe36b-b0f9-4dc5-af0c-9cb314b6d974)
@@ -76,7 +76,37 @@ where 𝑝 is the classification score, $\hat{b}$ and 𝑏 are the prediction an
 
 **Figure 6: Matching Metric Workflow**
 
-Using the consistent matching metric helps both heads train better together, improving the one-to-one head’s predictions during inference. This metric reduces the supervision gap between the two heads by aligning their training targets. By setting $\alpha_{o2o}$ = $\alpha_{o2m}$ and $\beta_{o2m}$ = $\beta_{o2o}$, both heads pick the same best samples. This alignment has improved performance, as seen by the number of matching pairs between the one-to-one and one-to-many heads after training. This approach leads to better model performance without needing extensive tuning.
+Using the consistent matching metric helps both heads train better together, improving the one-to-one head’s predictions during inference. This metric reduces the supervision gap between the two heads by aligning their training targets. By setting $\alpha_{o2o}$ = $\alpha_{o2m}$ and $\beta_{o2m}$ = $\beta_{o2o}$ both heads pick the same best samples. This alignment has improved performance, as seen by the number of matching pairs between the one-to-one and one-to-many heads after training. This approach leads to better model performance without needing extensive tuning.
 
 
+### Efficiency-Accuracy Driven Model
+In addition to post-processing, YOLO models face big challenges in balancing efficiency and accuracy. While various design strategies have been used, there has been a lack of thorough examination of all components in YOLOs. This leads to unnecessary computational load and limits the model’s capabilities. YOLOv10 focuses on balancing efficiency and accuracy in object detection. This involves a series of optimizations in both the model architecture and training processes to maximize performance while minimizing computational costs. Let’s explore both.
 
+### Efficiency-driven Model Design
+To achieve higher efficiency, YOLOv10 introduces several innovations that reduce computational overhead without sacrificing performance: A lightweight classification head, spatial channel downsampling, and rank-guided block design. Let’s understand each of the components one by one.
+
+### Lightweight Classification Head
+![image21](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/72faaaf2-c067-42bb-a549-76840328b51f)
+
+**Figure 7: YOLO's Architecture Overview**
+
+In traditional YOLO models, the classification and regression heads share the same architecture, resulting in high computational costs, particularly for the classification head.
+
+- **Classification Head** -  identifies the class of each detected object, such as ‘person’ or ‘car.’ It also estimates the probability for each class, ensuring the sum of probabilities is one.
+- **Regression Head** - predicts the bounding box coordinates for detected objects, including the center coordinates, width, and height. It also provides a confidence score for each prediction to help filter out low-confidence results.
+
+By analyzing the impact of errors, researchers found that the regression head is more critical for performance. Thus, YOLOv10 adopts a lightweight classification head using two depthwise separable convolutions followed by a 1×1 convolution, significantly reducing the overhead.
+
+## Spatial-Channel Decoupled Downsampling
+
+![image4](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/5176efa8-4884-4495-97c2-f3aa86af9c09)
+
+**Figure 8 - Convolution Process**
+
+Typical YOLO models use 3×3 convolutions with a stride of 2 for both spatial downsampling(from H × W to H/2 × W/2 ) and channel transformation(from C to 2C), which is computationally expensive. YOLOv10 decouples these operations for greater efficiency. First, a pointwise convolution adjusts the channel dimensions, followed by a depthwise convolution to reduce the spatial dimensions.
+
+![image16](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/1487f012-c9bd-4653-94aa-9fa03699f5d8)
+
+**Figure 9: Depthwise and Pointwise Conv. (source-medium)**
+
+In short, YOLOv10 uses pointwise convolution (1×1 filter) to increase the number of channels and depthwise convolution to reduce the spatial dimensions rather than doing both simultaneously in a single convolution layer. This decoupling reduces computational costs while retaining more information during downsampling. Specifically, the computational cost decreases from  to , and the param counts are reduced from  to . This approach maximizes information retention and leads to high performance with reduced latency.
