@@ -14,9 +14,7 @@ There are limited resources on the  internet that go through all the YOLO models
 ## Introduction to Object Detection
 The task of classifying and localizing multiples objects in an image is called `Object Detection`. Until a few years ago, a common approach was to take a CNN that was trained to classify and locate a single object roughly centered in the image, then slide this CNN across the image and make predictions at each step. The CNN was generally trained to predict not only class probabilities and a bounding box, but also an `objectness score` this is the estimated probability that the image does indeed contain an object centered near the middle. This is a binary classification output; it can be produced by a dense output lsyer with single unit, using the sigmoid activation function and trained using binary cross-entropy loss. In layman’s terms, Object detection is defined as Object Localization + Object Classification. Object Localization is the method of locating an object in the image using a bounding box and Object Classification is the method that tells what is in that bounding box. 
 
-![th](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/599c0a34-6e4d-48d9-a0c1-3ecb9369da7b)
-<img src="https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/599c0a34-6e4d-48d9-a0c1-3ecb9369da7b" alt="Difference between Object Classification, localization and detection" width="800" height="600">
-
+<img src="https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/599c0a34-6e4d-48d9-a0c1-3ecb9369da7b" alt="Difference between Object Classification, localization and detection" width="400" height="600">
 
 **Fig: Difference between Object Classification, localization and detection**
 [Source](https://www.geeksforgeeks.org/object-detection-vs-object-recognition-vs-image-segmentation/)
@@ -55,7 +53,8 @@ In January 2023, Ultralytics open-sourced the YOLOv8 with semantic segmentation 
 
 **This is the timeline of YOLO Models**
 
-![th](https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/432260bb-fa27-4a45-9ada-3144cf3c0326)
+<img src="https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/432260bb-fa27-4a45-9ada-3144cf3c0326" alt="Image 2" width="800" height="600">
+
 
 
 
