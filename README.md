@@ -58,6 +58,10 @@ In January 2023, Ultralytics open-sourced the YOLOv8 with semantic segmentation 
 
 # YOLO LEGACY
 
+[YOLOv1](YOLOv1)
+
+
+
 # Summary and Conclusion
 
 The whole YOLO series is full of engineering innovations and breakthroughs, It offers numerous applied machine learning ideas that can be used in specific scenarios. As Convolution Blocks are the basis for the entire YOLO series of models and as YOLO is mainly designed for edge devices, by going through all the YOLO models, one can learn different CNN optimization techniques.
