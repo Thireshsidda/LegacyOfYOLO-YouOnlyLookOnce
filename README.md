@@ -53,7 +53,7 @@ In January 2023, Ultralytics open-sourced the YOLOv8 with semantic segmentation 
 
 **This is the timeline of YOLO Models**
 
-<img src="https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/432260bb-fa27-4a45-9ada-3144cf3c0326" alt="Image 2" width="600" height="500">
+<img src="https://github.com/Thireshsidda/LegacyOfYOLO-YouOnlyLookOnce/assets/92287626/432260bb-fa27-4a45-9ada-3144cf3c0326" alt="Image 2" width="800" height="400">
 
 
 
