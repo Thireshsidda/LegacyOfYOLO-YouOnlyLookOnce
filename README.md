@@ -63,7 +63,7 @@ In January 2023, Ultralytics open-sourced the YOLOv8 with semantic segmentation 
 - [YOLOv3](YOLOv3)
 - [YOLOv4](YOLOv4)
 - [YOLOv5](YOLOv5)
-- [YOLO-R](YOLOv-R)
+- [YOLO-R](YOLO-R)
 - [YOLOX](YOLOX)
 - [YOLOv7](YOLOv7)
 - [YOLOv6](YOLOv6)
